@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cek calon istri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<meta name="description" content="Cek calon istri mu">
+  <link href="logo.png" type="image/png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    @keyframes a1 {
+      0% {opacity: 1; transform: scale(1.0);}
+      50% {opacity: 0.4; transform: scale(0.9);}
+      100% {opacity: 1; transform: scale(1.0);}
+    }
+    body {
+      background-image: url('bg.jpeg');
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      color: white;
+    }
+    .isi {
+      backdrop-filter: blur(7px);
+      z-index: 10;
+      position: relative;
+      box-shadow: 1px 1px 10px #cbdfe9;
+      padding: 18px;
+      height: 190px;
+      top: 200px;
+      width: 80%;
+      border-radius: 10px;
+    }
+    .hasil {
+      backdrop-filter: blur(7px);
+      display: none;
+      z-index: 10;
+      position: relative;
+      box-shadow: 1px 1px 20px #cbdfe9;
+      padding: 18px;
+      height: 230px;
+      top: 200px;
+      width: 80%;
+      border-radius: 10px;
+    }
+    .judul {
+      background: linear-gradient(to right, #ffe914, #ff1414);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    #nama {
+      padding: 5px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: 1px solid black;
+      outline: none;
+      width: 180px;
+      transition: .2s ease;
+    }
+    #nama:focus {
+      border: 2px solid #006ab1;
+      width: 230px;
+      margin-top: 25px;
+    }
+    #kirim {
+      width: 150px;
+      margin-top: 20px;
+      padding: 5px;
+      border-radius: 15px;
+      border: none;
+      background: linear-gradient(to right, #00bfe0, #7effea);
+      font-weight: bold;
+      transition: .2s ease;
+    }
+    #kirim:active {
+      transform: scale(0.9);
+      width: 200px;
+    }
+    #load {
+      position: relative;
+      top: 280px;
+      display: none;
+    }
+    #nm {
+      background: linear-gradient(to right, #00e0bf, #ff23f3);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    #cst {
+      margin-top: 15px;
+      background: linear-gradient(to right, #00e0bf, #ff23f3);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    #malam {
+      position: relative;
+      border: none;
+      top: 15px;
+      margin-left: 10px;
+      padding: 4px;
+      width: 70px;
+      background: linear-gradient(to right, #00bfe0, #003ea9);
+      font-weight: bold;
+      border-radius: 15px;
+      transition: .3s ease;
+    }
+    #malam.ml1 {
+      top: 30px;
+    }
+    .ld {
+      border-radius: 30px;
+    }
+    .ld1 {
+      animation: a1 1s infinite;
+    }
+    #gm {
+      background-color: transparent;
+      border: none;
+      color: aqua;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    </style>
+</head>
+<body>
+  <center>
+  <div class="isi" id="isi">
+    <h2 class="judul">Cek villain di <br>
+    dalam dirimu</h2>
+    <br>
+    <label for="nama">Masukan nama kamu:</label>
+    <br>
+    <input type="text" id="nama" name="nama" placeholder="Nama kamu" />
+    <br>
+     <button id="kirim" type="submit" onclick="cek()">Cek</button>
+  </div>
+  <div id="load">
+  <img class="ld" src="loading.gif" width="40px"/>
+  <br>
+  <br>
+  <h4 class="ld1">Sedang dalam proses..</h4>
+  </div>
+  <div class="hasil" id="hsl">
+    <h3 id="nm"></h3>
+    <h4>Villain di dalam <br> dirimu adalah</h4>
+    <h2 id="cst"></h2>
+    <br>
+    <button id="kirim" type="submit" onclick="ulang()">Cek lagi</button>
+    <br>
+    <br>
+    <h4>Game lain:</h4>
+    <button id="gm" onclick="bm()">Cek calon istri</button>
+  </div>
+  </center>
+  <script>
+    function cek() {
+      var istri = ["Obito uchiha", "Orochimaru", "Pain tendo", "Hidan", "Madara Uciha", "Kaguya", "Sasori"];
+      var ristri = istri[Math.floor(Math.random() * istri.length)];
+      var isi = document.getElementById("isi");
+      document.getElementById("load").style.display = "block";
+      var nama = document.getElementById("nama").value;
+      var hasil = document.getElementById("nm");
+      hasil.innerHTML = nama;
+      document.getElementById("cst").textContent = ristri;
+      var hasil2 = document.getElementById("hsl");
+      isi.style.display = "none";
+      setTimeout(function() {
+        hasil2.style.display = "block";
+        document.getElementById("load").style.display = "none";
+      }, 2000);
+    }
+    function ulang() {
+      var nama = document.getElementById("nama").value = "";
+      var hasil = document.getElementById("nm");
+      hasil.innerHTML = "";
+      var hasil2 = document.getElementById("hsl");
+      hasil2.style.display = "none";
+      var isi = document.getElementById("isi");
+      isi.style.display = "block";
+    }
+  </script>
+</body>
+</html>
